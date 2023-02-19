@@ -45,7 +45,18 @@
             color: #fff;
             position: absolute;
             bottom: 10px;
-            right: 10px;
+            left: 10px;
+        }
+        #hint-button {
+            font-size: 0.5em;
+            padding: 5px 10px;
+            background-color: #fff;
+            border: 2px solid #000;
+            color: #000;
+            border-radius: 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
     </style>
 </head>
@@ -56,8 +67,9 @@
         <div class="win">Gewonnen!</div>
         <div class="lose">Verloren!</div>
         <div class="sources">
-            <a href="https://wallpaperflare.com/shrek-movies-animated-movies-dreamworks-hd-wallpaper-preview">Bildquelle</a>
+            <a href="https://www.wallpaperflare.com/shrek-movies-animated-movies-dreamworks-wallpaper-yhnuo">Bildquelle</a>
         </div>
+        <button id="hint-button" onclick="alert('Der richtige Button ist der linke!')">Hinweis</button>
     </div>
     
     <audio id="win-sound">
@@ -86,13 +98,4 @@
                 var audio = document.getElementById("lose-sound");
                 audio.volume = 1;
                 audio.play();
-                winMessage.style.opacity = "0";
-                loseMessage.style.opacity = "1";
-                setTimeout(function() {
-                    loseMessage.style.opacity = "0";
-                }, 3000);
-            }
-        }
-    </script>
-    <a href="https://wallpaperflare.com/shrek-movies-animated-movies-dreamworks-hd-wallpaper-preview">
-        <img
+                winMessage.style.opacity = "0
