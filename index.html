@@ -40,20 +40,12 @@
 		.lose {
 			color: red;
 		}
-        .attribution {
-			color: red;
-			font-size: 0.8em;
-			position: fixed;
-			bottom: 5px;
-			left: 5px;
-			text-decoration: underline;
-		}
 	</style>
 </head>
 <body>
 	<div class="container">
-		<button onclick="checkWin()">Hier klicken</button>
-		<button onclick="checkWin()">Hier klicken</button>
+		<button id="button1" onclick="checkWin()">Hier klicken</button>
+		<button id="button2" onclick="checkWin()">Hier klicken</button>
 		<div class="win">Gewonnen!</div>
 		<div class="lose">Verloren!</div>
 	</div>
@@ -65,17 +57,13 @@
 		<source src="lose-sound.mp3" type="audio/mpeg">
 	</audio>
 	
-	<div class="attribution">
-		Das Hintergrundbild gehört nicht mir. Es gehört Wallpaper Flare. Bildadresse: https://c4.wallpaperflare.com/wallpaper/966/989/139/shrek-movies-animated-movies-dreamworks-hd-wallpaper-preview.jpg
-	</div>
-	
 	<script>
 		function checkWin() {
-			var randomNumber = Math.floor(Math.random() * 2);
-			var win = randomNumber === 0 ? true : false;
+			var randomButton = Math.floor(Math.random() * 2) + 1;
+			var winButton = randomButton === 1 ? "button1" : "button2";
 			var winMessage = document.querySelector(".win");
 			var loseMessage = document.querySelector(".lose");
-			if (win) {
+			if (event.target.id === winButton) {
 				var audio = document.getElementById("win-sound");
 				audio.volume = 0.3;
 				audio.play();
