@@ -14,6 +14,7 @@
 			align-items: center;
 			justify-content: center;
 			height: 100vh;
+			position: relative;
 		}
 		button {
 			font-size: 3em;
@@ -40,14 +41,23 @@
 		.lose {
 			color: red;
 		}
+		.source {
+			font-size: 0.8em;
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			color: #fff;
+			text-decoration: underline;
+		}
 	</style>
 </head>
 <body>
 	<div class="container">
-		<button id="button1" onclick="checkWin()">Hier klicken</button>
-		<button id="button2" onclick="checkWin()">Hier klicken</button>
+		<button onclick="checkWin()">Hier klicken</button>
+		<button onclick="checkLose()">Hier klicken</button>
 		<div class="win">Gewonnen!</div>
 		<div class="lose">Verloren!</div>
+		<div class="source">Hintergrundbild von Wallpaper Flare</div>
 	</div>
 	
 	<audio id="win-sound">
@@ -59,11 +69,11 @@
 	
 	<script>
 		function checkWin() {
-			var randomButton = Math.floor(Math.random() * 2) + 1;
-			var winButton = randomButton === 1 ? "button1" : "button2";
+			var randomNumber = Math.floor(Math.random() * 2);
+			var win = randomNumber === 0 ? true : false;
 			var winMessage = document.querySelector(".win");
 			var loseMessage = document.querySelector(".lose");
-			if (event.target.id === winButton) {
+			if (win) {
 				var audio = document.getElementById("win-sound");
 				audio.volume = 0.3;
 				audio.play();
@@ -83,6 +93,10 @@
 				}, 3000);
 			}
 		}
-	</script>
-</body>
-</html>
+		function checkLose() {
+			var randomNumber = Math.floor(Math.random() * 2);
+			var win = randomNumber === 1 ? true : false;
+			var winMessage = document.querySelector(".win");
+			var loseMessage = document.querySelector(".lose");
+			if (win) {
+				var audio = document.getElementById("
