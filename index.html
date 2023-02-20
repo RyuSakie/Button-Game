@@ -1,101 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Button-Spiel</title>
-    <style>
-        body {
-            background-image: url("https://c4.wallpaperflare.com/wallpaper/966/989/139/shrek-movies-animated-movies-dreamworks-hd-wallpaper-preview.jpg");
-            background-size: cover;
-            background-position: center center;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        button {
-            font-size: 3em;
-            padding: 20px 40px;
-            background-color: #ffcc00;
-            border: none;
-            color: #000;
-            border-radius: 10px;
-            margin: 20px;
-        }
-        .win, .lose {
-            font-size: 4em;
-            font-weight: bold;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        .win {
-            color: green;
-        }
-        .lose {
-            color: red;
-        }
-        .sources {
-            font-size: 0.8em;
-            color: #fff;
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-        }
-        #hint-button {
-            font-size: 0.5em;
-            padding: 5px 10px;
-            background-color: #fff;
-            border: 2px solid #000;
-            color: #000;
-            border-radius: 10px;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-    </style>
+	<title>Button-Spiel</title>
+	<style>
+		body {
+			background-image: url("https://c4.wallpaperflare.com/wallpaper/966/989/139/shrek-movies-animated-movies-dreamworks-hd-wallpaper-preview.jpg");
+			background-size: cover;
+			background-position: center center;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			position: relative;
+		}
+		button {
+			font-size: 3em;
+			padding: 20px 40px;
+			background-color: #ffcc00;
+			border: none;
+			color: #000;
+			border-radius: 10px;
+			margin: 20px;
+		}
+		.win, .lose {
+			font-size: 4em;
+			font-weight: bold;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0;
+			transition: opacity 1s ease;
+		}
+		.win {
+			color: green;
+		}
+		.lose {
+			color: red;
+		}
+    .source {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: white;
+    }
+	</style>
 </head>
 <body>
-    <div class="container">
-        <button onclick="checkWin()">Hier klicken</button>
-        <button onclick="checkWin()">Hier klicken</button>
-        <div class="win">Gewonnen!</div>
-        <div class="lose">Verloren!</div>
-        <div class="sources">
-            <a href="https://www.wallpaperflare.com/shrek-movies-animated-movies-dreamworks-wallpaper-yhnuo">Bildquelle</a>
-        </div>
-        <button id="hint-button" onclick="alert('Der richtige Button ist der linke!')">Hinweis</button>
-    </div>
-    
-    <audio id="win-sound">
-        <source src="win-sound.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="lose-sound">
-        <source src="lose-sound.mp3" type="audio/mpeg">
-    </audio>
-    
-    <script>
-        function checkWin() {
-            var randomNumber = Math.floor(Math.random() * 2);
-            var win = randomNumber === 0 ? true : false;
-            var winMessage = document.querySelector(".win");
-            var loseMessage = document.querySelector(".lose");
-            if (win) {
-                var audio = document.getElementById("win-sound");
-                audio.volume = 0.3;
-                audio.play();
-                winMessage.style.opacity = "1";
-                loseMessage.style.opacity = "0";
-                setTimeout(function() {
-                    winMessage.style.opacity = "0";
-                }, 3000);
-            } else {
-                var audio = document.getElementById("lose-sound");
-                audio.volume = 1;
-                audio.play();
-                winMessage.style.opacity = "0
+	<div class="container">
+		<button onclick="checkWin()">Hier klicken</button>
+		<button onclick="checkWin()">Hier klicken</button>
+	</div>
+	<div class="win">Gewonnen!</div>
+	<div class="lose">Verloren!</div>
+	<div class="source">Das Hintergrundbild gehört nicht mir. Es ist von Wallpaper Flare.</div>
+	
+	<audio id="win-sound">
+		<source src="win-sound.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="lose-sound">
+		<source src="lose-sound.mp3" type="audio/mpeg">
+	</audio>
+	
+	<script>
+		function checkWin() {
+			var randomNumber = Math.floor(Math.random() * 2);
+			var win = randomNumber === 0 ? true : false;
+			var winMessage = document.querySelector(".win");
+			var loseMessage = document.querySelector(".lose");
+			if (win) {
+				var audio = document.getElementById("win-sound");
+				audio.volume = 0.3;
+				audio.play();
+				winMessage.style.opacity = "1";
+				loseMessage.style.opacity = "0";
+				setTimeout(function() {
+					winMessage.style.opacity = "0";
+				}, 3000);
+			} else {
+				var audio = document.getElementById("lose-sound");
+				audio.volume = 1;
+				audio.play();
+				winMessage.style.opacity = "0";
+				loseMessage.style.opacity = "1";
+				setTimeout(function() {
+					loseMessage.style.opacity = "0";
+				}, 3000);
+			}
+		}
+	</script>
+</body>
+</html>
